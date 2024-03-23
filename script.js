@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const bookList = document.getElementById('bookList');
     const undoButton = document.getElementById('undoButton');
     const redoButton = document.getElementById('redoButton');
-    const deleteButton = document.getElementId('deleteButton')
     
     let books = [];
     let currentIndex = -1;
@@ -28,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
         updateUndoRedoButtons();
     });
 
-    function addBook(title, content) {
+   function addBook(title, content) {
     const bookDiv = document.createElement('div');
     bookDiv.classList.add('book');
 
@@ -42,9 +41,13 @@ document.addEventListener("DOMContentLoaded", function() {
     deleteButton.textContent = 'Delete';
     deleteButton.classList.add('deleteButton');
     deleteButton.addEventListener('click', function() {
+        // Remove the parent div of the delete button, which is the book entry
         bookDiv.remove();
+        // Adjust index accordingly if needed
         currentIndex--;
+        // Remove the corresponding entry from the books array
         books.splice(currentIndex + 1, 1);
+        // Update undo/redo buttons
         updateUndoRedoButtons();
     });
 
