@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const bookList = document.getElementById('bookList');
     const undoButton = document.getElementById('undoButton');
     const redoButton = document.getElementById('redoButton');
+    const deleteButton = document.getElementId('deleteButton')
     
     let books = [];
     let currentIndex = -1;
