@@ -29,30 +29,32 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function addBook(title, content) {
-        const bookDiv = document.createElement('div');
-        bookDiv.classList.add('book');
+    const bookDiv = document.createElement('div');
+    bookDiv.classList.add('book');
 
-        const titleElement = document.createElement('h2');
-        titleElement.textContent = title;
+    const titleElement = document.createElement('h2');
+    titleElement.textContent = title;
 
-        const contentElement = document.createElement('p');
-        contentElement.textContent = content;
+    const contentElement = document.createElement('p');
+    contentElement.textContent = content;
 
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.addEventListener('click', function() {
-            bookDiv.remove();
-            currentIndex--;
-            books.splice(currentIndex + 1, 1);
-            updateUndoRedoButtons();
-        });
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.classList.add('deleteButton');
+    deleteButton.addEventListener('click', function() {
+        bookDiv.remove();
+        currentIndex--;
+        books.splice(currentIndex + 1, 1);
+        updateUndoRedoButtons();
+    });
 
-        bookDiv.appendChild(titleElement);
-        bookDiv.appendChild(contentElement);
-        bookDiv.appendChild(deleteButton);
+    bookDiv.appendChild(titleElement);
+    bookDiv.appendChild(contentElement);
+    bookDiv.appendChild(deleteButton);
 
-        bookList.appendChild(bookDiv);
-    }
+    bookList.appendChild(bookDiv);
+}
+
 
     function updateUndoRedoButtons() {
         undoButton.disabled = currentIndex === -1;
